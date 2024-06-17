@@ -8,7 +8,7 @@ int tsp_g[4][4] = {
     {6, 13, 0, 12},
     {8, 8, 9, 0}
 };
-int visited[10], n, cost = 0;
+int visited[4], n, cost = 0;
 
 /* creating a function to generate the shortest path */
 void travellingsalesman(int c){
