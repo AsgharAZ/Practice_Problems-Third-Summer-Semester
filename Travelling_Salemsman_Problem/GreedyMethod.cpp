@@ -1,27 +1,30 @@
 #include <iostream>
 using namespace std;
-// Or use std::cout directly
-
-int tsp_g[4][4] = {
-    {0, 10, 15, 20},
-    {5, 0, 9, 10},
-    {6, 13, 0, 12},
-    {8, 8, 9, 0}
+int tsp_g[10][10] = {
+   {12, 30, 33, 10, 45},
+   {56, 22, 9, 15, 18},
+   {29, 13, 8, 5, 12},
+   {33, 28, 16, 10, 3},
+   {1, 4, 30, 24, 20}
 };
-int visited[4], n, cost = 0;
+//An array that keeps track of all the visited vertices
+int visited[10];
+int n;
+int cost = 0;
 
-/* creating a function to generate the shortest path */
+
+// This function recursively finds the shortest path starting from vertex c.
 void travellingsalesman(int c){
    int k, adj_vertex = 999;
-   int min = 999;
+   int min = 999; //initializes the maximum min value, which will be reset obviously when other nodes are checked
    
-   /* marking the vertices visited in an assigned array */
+   //Marks the current vertex as marked
    visited[c] = 1;
    
-   /* displaying the shortest path */
+   // This will display the shortest path
    cout<<c + 1<<" ";
    
-   /* checking the minimum cost edge in the graph */
+   // Here we are checking the minimum cost-edge in the graph
    for(k = 0; k < n; k++) {
       if((tsp_g[c][k] != 0) && (visited[k] == 0)) {
          if(tsp_g[c][k] < min) {
@@ -30,7 +33,7 @@ void travellingsalesman(int c){
          }
       }
    }
-   if(min != 999) {
+   if(min != 999) { 
       cost = cost + min;
    }
    if(adj_vertex == 999) {
